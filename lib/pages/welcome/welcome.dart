@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _WelcomeState extends State<Welcome> {
             width: 375.w,
             child: Stack(alignment: Alignment.topCenter, children: [
               PageView(
-                controller: pageController,
+               controller: pageController,
                 onPageChanged: (index) {
                   state.page = index;
                   BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
@@ -39,21 +40,21 @@ class _WelcomeState extends State<Welcome> {
                 },
                 children: [
                   _page(
-                      1,
+                      0,
                       context,
                       "Next",
                       "First Learning",
                       "Forgot about  a for of  paper all knowledge in one learning",
                       "assets/images/reading.png"),
                   _page(
-                      2,
+                      1,
                       context,
                       "Next",
                       "Connect with Everyone",
                       "Always keep  in  touch with your tutor and friend.Let get connected",
                       "assets/images/boy.png"),
                   _page(
-                      3,
+                      2,
                       context,
                       "Get Started ",
                       "Always Fascinated Learning",
@@ -117,15 +118,15 @@ class _WelcomeState extends State<Welcome> {
         GestureDetector(
           onTap: () {
             print('gesture');
-            if (index<3) {
+            if (index<2) {
               //animate
-              pageController.animateTo(index.toDouble(),
-                  duration: const Duration(milliseconds: 500),
+              pageController.animateToPage(index+1,
+                  duration: const Duration(milliseconds: 100),
                   curve: Curves.easeIn);
+              log("This is pressed $index");
             } else {
               //
 
-              
               
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyHomePage(title: 'Home',)));
             }
