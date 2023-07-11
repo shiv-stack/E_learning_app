@@ -20,7 +20,7 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-  PageController pageController = PageController(initialPage: 1);
+  PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -121,14 +121,15 @@ class _WelcomeState extends State<Welcome> {
             if (index<2) {
               //animate
               pageController.animateToPage(index+1,
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   curve: Curves.easeIn);
               log("This is pressed $index");
             } else {
               //
 
               
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyHomePage(title: 'Home',)));
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyHomePage(title: 'Home',)));
+              Navigator.popAndPushNamed(context,'/signin');
             }
           },
           child: Container(
