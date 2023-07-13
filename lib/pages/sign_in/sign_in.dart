@@ -20,9 +20,22 @@ class _SigninState extends State<Signin> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: buildAppBar(),
-          body: SingleChildScrollView(child: Column(
+          body: SingleChildScrollView(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildThirdPartyLOgin(context)
+              buildThirdPartyLOgin(context),
+              Center(child: reusableText('or use  your email account login')),
+              Container(
+                margin: EdgeInsets.only(top: 66.h),
+                padding: EdgeInsets.only(left: 25.w),
+                child: Column(
+                  children: [
+                    reusableText('Email'),
+                  
+                  ],
+                ),
+              ),
             ],
           )),
         ),

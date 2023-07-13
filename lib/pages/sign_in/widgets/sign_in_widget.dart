@@ -13,11 +13,12 @@ AppBar buildAppBar() {
     ),
     title: Center(
       child: Text(
-        " Log IN",
+        "Log In",
         style: TextStyle(
-            color: Colors.black,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.normal),
+          color: Colors.black,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.normal,
+        ),
       ),
     ),
   );
@@ -27,30 +28,37 @@ AppBar buildAppBar() {
 Widget buildThirdPartyLOgin(BuildContext context) {
   return Center(
     child: Container(
-      margin: EdgeInsets.only(
-        top: 40.h,
-        bottom: 20.h
-      ),
+      margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _resuableIcons("google"),
-        _resuableIcons("apple"),
-        _resuableIcons("facebook"),
+          _resuableIcons("apple"),
+          _resuableIcons("facebook"),
         ],
       ),
     ),
   );
 }
 
-
-Widget _resuableIcons (String IconName){
+Widget _resuableIcons(String IconName) {
   return GestureDetector(
-            onTap: (){
-
-            },
-            child: SizedBox(width: 40.w,height: 40.w,
-            child: Image.asset("assets/icons/$IconName.png"),),
-          );
+    onTap: () {},
+    child: SizedBox(
+      width: 40.w,
+      height: 40.w,
+      child: Image.asset("assets/icons/$IconName.png"),
+    ),
+  );
+}
+Widget reusableText(String text){
+  return Container(
+    margin: EdgeInsets.only(bottom: 5.h),
+    child: Text(text,style: TextStyle(
+      color: Colors.grey.withOpacity(0.5),
+      fontWeight: FontWeight.normal,
+      fontSize: 14.sp,
+    ),),
+  );
 
 }
