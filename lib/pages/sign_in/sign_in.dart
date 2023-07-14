@@ -28,11 +28,27 @@ class _SigninState extends State<Signin> {
               Center(child: reusableText('or use  your email account login')),
               Container(
                 margin: EdgeInsets.only(top: 66.h),
-                padding: EdgeInsets.only(left: 25.w),
+                padding: EdgeInsets.only(left: 25.w, right: 25.w),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     reusableText('Email'),
-                  
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    buildTextField('Enter your Email Address', 'email', 'user'),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    reusableText('Password'),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    buildTextField('Enter your Password', 'password', 'lock'),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    forgotPassword("Forgot password"),
                   ],
                 ),
               ),
