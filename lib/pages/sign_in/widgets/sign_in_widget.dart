@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/entities/contact.dart';
+import 'package:ulearning_app/common/values/colors.dart';
 
 AppBar buildAppBar() {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(1.0),
       child: Container(
-        color: Colors.grey.withOpacity(0.5),
+        // color: Colors.grey.withOpacity(0.5),
+        color: AppColors.primarySecondaryBackground,
         // height defines thickness of the line
         height: 1.0,
       ),
@@ -16,7 +18,7 @@ AppBar buildAppBar() {
       child: Text(
         "Log In",
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           fontSize: 16.sp,
           fontWeight: FontWeight.normal,
         ),
@@ -30,6 +32,7 @@ Widget buildThirdPartyLOgin(BuildContext context) {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
+      padding: EdgeInsets.only(left: 25.w,right: 25.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -74,7 +77,7 @@ Widget buildTextField(String hintText, String textType, String iconName) {
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.all(Radius.circular(15.w)),
-      border: Border.all(color: Colors.black),
+      border: Border.all(color:AppColors.primaryFourElementText),
     ),
     child: Row(
       children: [
@@ -104,31 +107,69 @@ Widget buildTextField(String hintText, String textType, String iconName) {
                 focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
-                hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5))),
+                hintStyle: TextStyle(color: AppColors.primarySecondaryElementText)),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: "Avenir",
               fontWeight: FontWeight.normal,
               fontSize: 12.sp,
             ),
             autocorrect: false,
-            obscureText: textType == "password"?true:false,
+            obscureText: textType == "password" ? true : false,
           ),
         ),
       ],
     ),
   );
 }
-Widget forgotPassword(String ftext){
+
+Widget forgotPassword(String ftext) {
   return Container(
     width: 260.w,
     height: 44.h,
     child: GestureDetector(
-      child: Text(ftext),
+      child: Text(
+        ftext,
+        style: TextStyle(
+            color: AppColors.primaryText,
+            decoration: TextDecoration.underline,
+            decorationColor: AppColors.primaryText),
+      ),
       onTap: (() {
         print('forgot tapped');
       }),
     ),
-    
+  );
+}
+
+Widget buildLogInRegButton(String buttonName, String buttontype) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      width: 325.w,
+      height: 50.h,
+      margin: EdgeInsets.only(
+          left: 25, right: 25, top: buttontype == "login" ? 40.h : 20.h),
+      decoration: BoxDecoration(
+          color: buttontype == "login"?AppColors.primaryElement:AppColors.primaryBackground,
+          borderRadius: BorderRadius.circular(15.w),
+
+          border: Border.all(
+            color: buttontype == "login"?Colors.transparent:AppColors.primaryFourElementText
+          ),
+          boxShadow: [
+            BoxShadow(
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: Offset(0, 1),
+                color: Colors.grey.withOpacity(0.1))
+          ]),
+      child: Center(
+        child: Text(
+          buttonName,
+          style: TextStyle(color: buttontype == "login"?AppColors.primaryBackground:AppColors.primaryText, fontSize: 16.sp),
+        ),
+      ),
+    ),
   );
 }

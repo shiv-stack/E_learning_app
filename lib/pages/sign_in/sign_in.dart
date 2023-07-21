@@ -27,7 +27,7 @@ class _SigninState extends State<Signin> {
               buildThirdPartyLOgin(context),
               Center(child: reusableText('or use  your email account login')),
               Container(
-                margin: EdgeInsets.only(top: 66.h),
+                margin: EdgeInsets.only(top: 36.h),
                 padding: EdgeInsets.only(left: 25.w, right: 25.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,6 +49,8 @@ class _SigninState extends State<Signin> {
                       height: 5.h,
                     ),
                     forgotPassword("Forgot password"),
+                    buildLogInRegButton("Log In", "login"),
+                    buildLogInRegButton("Register", "register"),
                   ],
                 ),
               ),
