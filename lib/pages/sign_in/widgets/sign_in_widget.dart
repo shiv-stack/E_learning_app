@@ -32,7 +32,7 @@ Widget buildThirdPartyLOgin(BuildContext context) {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-      padding: EdgeInsets.only(left: 25.w,right: 25.w),
+      padding: EdgeInsets.only(left: 25.w, right: 25.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -70,14 +70,15 @@ Widget reusableText(String text) {
   );
 }
 
-Widget buildTextField(String hintText, String textType, String iconName) {
+Widget buildTextField(String hintText, String textType, String iconName,
+    void Function(String value)? func) {
   return Container(
     width: 325.w,
     height: 50.h,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.all(Radius.circular(15.w)),
-      border: Border.all(color:AppColors.primaryFourElementText),
+      border: Border.all(color: AppColors.primaryFourElementText),
     ),
     child: Row(
       children: [
@@ -92,6 +93,7 @@ Widget buildTextField(String hintText, String textType, String iconName) {
           height: 50.h,
           margin: EdgeInsets.only(bottom: 3.h),
           child: TextField(
+            onChanged: ((value) => func!(value)),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
                 hintText: hintText,
@@ -107,7 +109,8 @@ Widget buildTextField(String hintText, String textType, String iconName) {
                 focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
-                hintStyle: TextStyle(color: AppColors.primarySecondaryElementText)),
+                hintStyle:
+                    TextStyle(color: AppColors.primarySecondaryElementText)),
             style: TextStyle(
               color: AppColors.primaryText,
               fontFamily: "Avenir",
@@ -151,12 +154,14 @@ Widget buildLogInRegButton(String buttonName, String buttontype) {
       margin: EdgeInsets.only(
           left: 25, right: 25, top: buttontype == "login" ? 40.h : 20.h),
       decoration: BoxDecoration(
-          color: buttontype == "login"?AppColors.primaryElement:AppColors.primaryBackground,
+          color: buttontype == "login"
+              ? AppColors.primaryElement
+              : AppColors.primaryBackground,
           borderRadius: BorderRadius.circular(15.w),
-
           border: Border.all(
-            color: buttontype == "login"?Colors.transparent:AppColors.primaryFourElementText
-          ),
+              color: buttontype == "login"
+                  ? Colors.transparent
+                  : AppColors.primaryFourElementText),
           boxShadow: [
             BoxShadow(
                 spreadRadius: 1,
@@ -167,7 +172,11 @@ Widget buildLogInRegButton(String buttonName, String buttontype) {
       child: Center(
         child: Text(
           buttonName,
-          style: TextStyle(color: buttontype == "login"?AppColors.primaryBackground:AppColors.primaryText, fontSize: 16.sp),
+          style: TextStyle(
+              color: buttontype == "login"
+                  ? AppColors.primaryBackground
+                  : AppColors.primaryText,
+              fontSize: 16.sp),
         ),
       ),
     ),

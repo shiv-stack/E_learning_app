@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/pages/sign_in/bloc/signin_bloc.dart';
+import 'package:ulearning_app/pages/sign_in/bloc/signin_events.dart';
+import 'package:ulearning_app/pages/sign_in/bloc/signin_states.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widget.dart';
 
 class Signin extends StatefulWidget {
@@ -14,7 +18,9 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BlocBuilder<SignInBloc,SignInState>(
+      builder: (context,state){
+        return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
@@ -36,7 +42,12 @@ class _SigninState extends State<Signin> {
                     SizedBox(
                       height: 5.h,
                     ),
-                    buildTextField('Enter your Email Address', 'email', 'user'),
+                    buildTextField('Enter your Email Address', 'email', 'user',
+                    (value){
+                      context.read<SignInBloc>().add(EmailEvent(value));
+                    }
+                    
+                    ),
                     SizedBox(
                       height: 5.h,
                     ),
@@ -44,7 +55,10 @@ class _SigninState extends State<Signin> {
                     SizedBox(
                       height: 5.h,
                     ),
-                    buildTextField('Enter your Password', 'password', 'lock'),
+                    buildTextField('Enter your Password', 'password', 'lock',
+                    (value){
+                      context.read<SignInBloc>().add(PasswordEvent(value));
+                    }),
                     SizedBox(
                       height: 5.h,
                     ),
@@ -60,5 +74,9 @@ class _SigninState extends State<Signin> {
         ),
       ),
     );
+
+      });
+    
   }
+
 }
