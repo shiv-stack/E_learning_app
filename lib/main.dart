@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/app_blocs.dart';
 import 'package:ulearning_app/app_events.dart';
+import 'package:ulearning_app/pages/bloc_provider.dart';
+import 'package:ulearning_app/pages/register/register.dart';
 import 'package:ulearning_app/pages/sign_in/bloc/signin_bloc.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/welcome/bloc/welcome_blocs.dart';
@@ -26,19 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          //first provider
-          BlocProvider(
-              create: (context) => WelcomeBloc(),
-          ),
-           BlocProvider(
-              create: (context) => AppBlocs(),
-          ),
-           BlocProvider(
-              create: (context) => SignInBloc(),
-          ),
-
-        ],
+        providers: AppBlocproviders.allBlocproviders,
         child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
               title: 'Flutter Demo',
@@ -52,10 +42,11 @@ class MyApp extends StatelessWidget {
              
               home: const Welcome(),
               routes: {
-                '/myhomepage':(context)=>MyHomePage(title: 'Home',),
-                 '/signin':(context)=>Signin(),
+                '/myhomepage':(context)=>const MyHomePage(title: 'Home',),
+                 '/signin':(context)=>const Signin(),
+                //  '/register':(context) => const Register(),
               },
-              
+               
               
               ),
         ));
