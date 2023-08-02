@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/app_blocs.dart';
 import 'package:ulearning_app/app_events.dart';
+import 'package:ulearning_app/common/values/colors.dart';
 import 'package:ulearning_app/pages/bloc_provider.dart';
 import 'package:ulearning_app/pages/register/register.dart';
 import 'package:ulearning_app/pages/sign_in/bloc/signin_bloc.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
               title: 'Flutter Demo',
               theme: ThemeData(
                appBarTheme:const AppBarTheme(
+                iconTheme: IconThemeData(
+                  color: AppColors.primaryText
+                ),
                 elevation: 0,
                 backgroundColor: Colors.white
               )
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
               routes: {
                 '/myhomepage':(context)=>const MyHomePage(title: 'Home',),
                  '/signin':(context)=>const Signin(),
-                //  '/register':(context) => const Register(),
+                 '/register':(context) => const Register(),
               },
                
               
