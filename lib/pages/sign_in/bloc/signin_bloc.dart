@@ -18,5 +18,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     //  print('my password is ${event.password}');
      
     emit(state.copyWith(password: event.password));
+    
   }
 }
