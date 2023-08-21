@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/pages/register/bloc/register_blocs.dart';
 import 'package:ulearning_app/pages/register/bloc/register_event.dart';
 import 'package:ulearning_app/pages/register/bloc/register_states.dart';
+import 'package:ulearning_app/pages/register/register_controller.dart';
 
 import '../common_widgets.dart';
 import '../sign_in/bloc/signin_bloc.dart';
@@ -73,6 +74,7 @@ class _RegisterState extends State<Register> {
                       ),
                       buildLogInRegButton("Sign Up", "login", (() {
                         // Navigator.of(context).pushNamed("/register");
+                        RegisterController(context:context ).handleEmailRegister();
                       })),
                     ],
                   ),

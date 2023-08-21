@@ -1,5 +1,3 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,11 +17,10 @@ class SignInController {
         if (emailAddress.isEmpty) {
           toastInfo(msg: "you need to fill email address");
           return;
-      
+
           //
         }
         if (password.isEmpty) {
-        
           toastInfo(msg: "you need to fill password");
           return;
           //
@@ -46,6 +43,8 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             print('user exist');
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("/application", (route) => false);
             // we got verified user from firebase
 
           } else {
@@ -64,13 +63,10 @@ class SignInController {
             print('Wrong password provided for that user');
             toastInfo(msg: "wrong password provided for that user");
             return;
-          }
-          else if(e.code == 'invalid-email'){
+          } else if (e.code == 'invalid-email') {
             print('Your email format is wrong');
-              toastInfo(msg: "Wrong email format for that user");
-              return;
-            
-
+            toastInfo(msg: "Wrong email format for that user");
+            return;
           }
         }
       }
