@@ -3,22 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 import 'package:ulearning_app/common/routes/pages.dart';
 import 'package:ulearning_app/common/values/colors.dart';
 import 'package:ulearning_app/pages/application/application_page.dart';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:ulearning_app/pages/application/bloc/app_blocs.dart';
 import 'package:ulearning_app/pages/application/bloc/app_states.dart';
 import 'common/routes/routes.dart';
 
-
+import 'global.dart';
 import 'pages/welcome/welcome.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Global.init();
 
   runApp(const MyApp());
 }
@@ -93,7 +90,7 @@ class MyApp extends StatelessWidget {
 //         body: Center(
 //           child: BlocBuilder<AppBlocs, AppStates>(
 //             builder: (context, state) {
-//               return Column(
+//               return Column(   fhf fgd gudf
 //                 mainAxisAlignment: MainAxisAlignment.center,
 //                 children: <Widget>[
 //                   const Text(

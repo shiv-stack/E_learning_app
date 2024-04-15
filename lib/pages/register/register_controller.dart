@@ -1,5 +1,3 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +42,7 @@ class RegisterController {
         toastInfo(
             msg:
                 "An email has been sent to your registered email. To Activate please click on the link");
-                Navigator.of(context).pop();
+        Navigator.of(context).pop();
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak password') {

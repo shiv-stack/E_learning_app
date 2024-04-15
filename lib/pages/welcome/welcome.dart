@@ -8,10 +8,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/values/colors.dart';
+import 'package:ulearning_app/common/values/constant.dart';
 import 'package:ulearning_app/main.dart';
 import 'package:ulearning_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ulearning_app/pages/welcome/bloc/welcome_events.dart';
 import 'package:ulearning_app/pages/welcome/bloc/welcome_states.dart';
+
+import '../../global.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -33,7 +36,7 @@ class _WelcomeState extends State<Welcome> {
             width: 375.w,
             child: Stack(alignment: Alignment.topCenter, children: [
               PageView(
-               controller: pageController,
+                controller: pageController,
                 onPageChanged: (index) {
                   state.page = index;
                   BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
@@ -113,24 +116,30 @@ class _WelcomeState extends State<Welcome> {
             style: TextStyle(
                 color: AppColors.primarySecondaryElementText,
                 fontSize: 14.sp,
-                fontWeight: FontWeight.normal),  
+                fontWeight: FontWeight.normal),
           ),
         ),
         GestureDetector(
           onTap: () {
             print('gesture');
-            if (index<2) {
+            if (index < 2) {
               //animate
-              pageController.animateToPage(index+1,
+              pageController.animateToPage(index + 1,
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeIn);
               log("This is pressed $index");
             } else {
+              print("-1");
+              print("third wala");
               //
 
-              
               // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyHomePage(title: 'Home',)));
-             Navigator.of(context).pushNamedAndRemoveUntil("/sign_in", (route) => false);
+              Global.storageService
+                  .setbool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print("0");
+              // print("the vaue is ${Global.storageService.getDEviceFirstOpen()}");
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }
           },
           child: Container(
@@ -147,7 +156,6 @@ class _WelcomeState extends State<Welcome> {
                     blurRadius: 2,
                     offset: const Offset(0, 1),
                     // blurStyle: BlurStyle.normal
-
                   ),
                 ]),
             child: Center(
@@ -158,6 +166,7 @@ class _WelcomeState extends State<Welcome> {
                     fontSize: 16.sp,
                     // fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.normal),
+                    
               ),
             ),
           ),
